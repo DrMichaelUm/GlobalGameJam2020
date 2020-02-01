@@ -164,8 +164,9 @@ MonoBehaviour:
   trapData: {fileID: 11400000, guid: 5ba80bd3c6bdcc341b748291fed7caba, type: 2}
   trapPrefab: {fileID: 6504398178018461597, guid: 34394ec4a76b8f449a8b2e328883a993,
     type: 3}
+  trapSkillCollider: {fileID: 4974574281565597104}
   trapsHolder: {fileID: 0}
-  _aimed: 0
+  _objectsPool: {fileID: 11400000, guid: bd11c4c79f6d60d43a71329db4945c04, type: 2}
 --- !u!114 &2017281700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +205,7 @@ GameObject:
   - component: {fileID: 4974574281565597105}
   - component: {fileID: 4974574281565597104}
   m_Layer: 0
-  m_Name: Trap Radius
+  m_Name: Trap Skill Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +240,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.5
 --- !u!1 &8871489337046500732
 GameObject:
   m_ObjectHideFlags: 0

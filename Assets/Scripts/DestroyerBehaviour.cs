@@ -11,13 +11,22 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
 
     [SerializeField]
     private PlayerData destroyerData;
-
     [SerializeField]
-    private GameEvent OnDestroySkillCasted;
+    private PlayerData repeirerData;
+
+    [SerializeField] private GameEvent OnDestroySkillCasted;
+    [SerializeField] private GameEvent OnDestroyerTrapped;
 
     [SerializeField]
     private float damageBonusCofficient;
     private float startDamage;
+
+    private Rigidbody2D rb;
+    private Vector2 knockForceDirection;
+    private bool isKnocked = false;
+    private float timer = 0.55f;
+
+    private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
 
     private void Start()
@@ -25,6 +34,7 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
         repairCastTriggerEventListener.SetActive(false);
         itemDestroyedEventListener.SetActive(false);
         startDamage = destroyerData.AttackPower;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -37,8 +47,8 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //TODO прописать условие для тэга коллайдера области урона ремонтника
-        repairCastTriggerEventListener.SetActive(true);
+        if (collision.CompareTag("RepairWave") && !isKnocked)
+            repairCastTriggerEventListener.SetActive(true);
         if (collision.CompareTag("Item"))
             itemDestroyedEventListener.SetActive(true);
 
@@ -46,8 +56,8 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //TODO прописать условие для тэга коллайдера области урона ремонтника
-        repairCastTriggerEventListener.SetActive(false);
+        if (collision.CompareTag("RepairWave"))
+            repairCastTriggerEventListener.SetActive(false);
         if (collision.CompareTag("Item"))
             itemDestroyedEventListener.SetActive(false);
     }
@@ -62,6 +72,51 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
     {
         float damageBoost = scoreCounter.Score * damageBonusCofficient;
         destroyerData.AttackPower = startDamage + damageBoost;
+    }
+
+    public void OnTrapped(TrapData trapData)
+    {
+        StartCoroutine(OnTrappedCoroutine(trapData.StunTime));
+    }
+
+    private IEnumerator OnTrappedCoroutine(float stunTime)
+    {
+        OnDestroyerTrapped.Raise();
+
+        //speed = 0
+
+        yield return new WaitForSeconds(stunTime);
+
+        //speed = normal;
+    }
+
+    private IEnumerator AddImpulseProcess()
+    {
+        Vector2 forceDirection = Random.insideUnitCircle.normalized;
+        float speed = repeirerData.Strength;
+        while (timer >= 0)
+        {
+            timer -= Time.deltaTime;
+            rb.AddForce(forceDirection*speed, ForceMode2D.Force);
+            speed -= 5f;
+            yield return waitForFixedUpdate;
+        }
+        timer = 0.55f;
+    }
+
+    private IEnumerator KnockingImmuneTime()
+    {
+        yield return new WaitForSeconds(3f);
+        isKnocked = false;
+    }
+    public void KnockBack()
+    {
+        isKnocked = true;
+        Debug.Log("KnockingBack!");
+        repairCastTriggerEventListener.SetActive(false);
+        StopCoroutine(AddImpulseProcess());
+        StartCoroutine(AddImpulseProcess());
+        StartCoroutine(KnockingImmuneTime());
     }
 
 }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4974574281055550721}
   - component: {fileID: 2017281699}
   - component: {fileID: 2017281700}
+  - component: {fileID: 1211909346733088571}
   m_Layer: 0
   m_Name: Repairer
   m_TagString: Repairer
@@ -193,6 +194,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1211909346733088571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974574281055550722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3824244089745434eb9da70a59e2831e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4974574281565597106
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +266,7 @@ GameObject:
   - component: {fileID: 6480330324556352688}
   m_Layer: 0
   m_Name: Gun Skill
-  m_TagString: Untagged
+  m_TagString: RepairWave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

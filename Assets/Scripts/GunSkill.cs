@@ -5,7 +5,6 @@ using UnityEngine;
 public class GunSkill : MonoBehaviour
 {
     [SerializeField] private GameEvent OnRepairGunSkillCasted;
-
     private void Update()
     {
         if (Input.GetMouseButton(0))

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4974574281055550727}
   - component: {fileID: 4974574281055550720}
   - component: {fileID: 4974574281055550721}
+  - component: {fileID: 2017281699}
+  - component: {fileID: 2017281700}
   m_Layer: 0
   m_Name: Repairer
   m_TagString: Untagged
@@ -146,6 +148,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   inputMethod: 1
+--- !u!114 &2017281699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974574281055550722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63084564fd50549489fdda2ce67a0217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapData: {fileID: 11400000, guid: 5ba80bd3c6bdcc341b748291fed7caba, type: 2}
+  trapPrefab: {fileID: 6504398178018461597, guid: 34394ec4a76b8f449a8b2e328883a993,
+    type: 3}
+  trapsHolder: {fileID: 0}
+  _aimed: 0
+--- !u!114 &2017281700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974574281055550722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611515263345a1b48a28832d845ce8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 37401dbdb73a7cf468acd0b37161c732, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2017281699}
+        m_MethodName: StopAim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4974574281565597106
 GameObject:
   m_ObjectHideFlags: 0

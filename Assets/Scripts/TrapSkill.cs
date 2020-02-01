@@ -13,7 +13,7 @@ public class TrapSkill : MonoBehaviour
 
     private Camera mainCamera;
 
-    private bool _aimed = false;
+   [SerializeField] private bool _aimed = false;
 
     private void Awake()
     {
@@ -69,8 +69,8 @@ public class TrapSkill : MonoBehaviour
 
         if (Input.GetMouseButtonDown (1) && _aimed == false)
         {
-            _aimed = true;
             Aim();
+            _aimed = true;
         }
 
         else if (Input.GetMouseButtonDown (1) && _aimed)

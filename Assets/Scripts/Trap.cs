@@ -34,6 +34,12 @@ public class Trap : MonoBehaviour, IPlayable
       yield return new WaitForSeconds (time);
       
       OnTrapDeactivated.Raise();
+      
+      DeactivateImmediately();
+   }
+
+   public void DeactivateImmediately()
+   {
       gameObject.SetActive (false);
    }
 

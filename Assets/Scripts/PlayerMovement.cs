@@ -2,8 +2,6 @@
 
 public class PlayerMovement : MonoBehaviour, IMovable
 {
-    [SerializeField] 
-    private GameEvent onPlayerMoveEvent;
     [SerializeField]
     private float moveSpeed = 1f;
 
@@ -72,8 +70,6 @@ public class PlayerMovement : MonoBehaviour, IMovable
             if (Input.GetKey (KeyCode.DownArrow))
                 movement.y = -1;
         }
-        if (!(movement.x == 0 && movement.y == 0))
-            onPlayerMoveEvent.Raise();
         return movement;
     }
     public void Move(Rigidbody2D rb, float speed, Vector2 movement)

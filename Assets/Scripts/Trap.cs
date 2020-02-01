@@ -1,58 +1,57 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
-public class Trap : MonoBehaviour, IPlayable
+public class Trap : MonoBehaviour//, IPlayable
 {
-   [SerializeField] private TrapData trapData;
+    [SerializeField] private TrapData trapData;
 
-   [SerializeField] private GameEvent OnTrapSpawned;
-   [SerializeField] private GameEvent OnTrapDeactivated;
-   [SerializeField] private GameEvent OnDestroyerTrapped;
+    [SerializeField] private GameEvent OnTrapSpawned;
+    [SerializeField] private GameEvent OnTrapDeactivated;
+    [SerializeField] private GameEvent OnDestroyerTrapped;
 
-   private float lifetime;
-   
-   private void Awake()
-   {
-      Init();
-   }
+    private float lifetime;
 
-   private void OnEnable()
-   {
-      //deactivate in 'lifetime' time after spawn
-      OnTrapSpawned.Raise();
-      StartCoroutine (Deactivate(lifetime));
-   }
+    private void Awake()
+    {
+        Init();
+    }
 
-   private void Init()
-   {
-      lifetime = trapData.Lifetime;
-   }
+    private void OnEnable()
+    {
+        //deactivate in 'lifetime' time after spawn
+        OnTrapSpawned.Raise();
+        StartCoroutine (Deactivate (lifetime));
+    }
 
-   private IEnumerator Deactivate(float time)
-   {
-      yield return new WaitForSeconds (time);
-      
-      OnTrapDeactivated.Raise();
-      
-      DeactivateImmediately();
-   }
+    private void Init()
+    {
+        lifetime = trapData.Lifetime;
+    }
 
-   public void DeactivateImmediately()
-   {
-      gameObject.SetActive (false);
-   }
+    private IEnumerator Deactivate (float time)
+    {
+        yield return new WaitForSeconds (time);
 
-   //set to 'OnDestroyerTrapped'
-   public void Skill()
-   {
-      //TODO EFFECT
-      Debug.Log ("TRAPPED");
-   }
+        OnTrapDeactivated.Raise();
 
-   private void OnTriggerEnter2D (Collider2D other)
-   {
-      if (other.CompareTag ("Destroyer"))
-         OnDestroyerTrapped.Raise();
-   }
+        DeactivateImmediately();
+    }
+
+    public void DeactivateImmediately()
+    {
+        gameObject.SetActive (false);
+    }
+
+    //set to 'OnDestroyerTrapped'
+    // public void Skill()
+    // {
+    //     //TODO EFFECT
+    //     Debug.Log ("TRAPPED");
+    // }
+
+    private void OnTriggerEnter2D (Collider2D other)
+    {
+        if (other.CompareTag ("Destroyer"))
+            OnDestroyerTrapped.Raise();
+    }
 }

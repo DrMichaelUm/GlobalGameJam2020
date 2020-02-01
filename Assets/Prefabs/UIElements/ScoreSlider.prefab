@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 1200666911228108945}
   - component: {fileID: 1200666911228108944}
   - component: {fileID: 1200666911228108959}
+  - component: {fileID: 6070727659688568503}
   m_Layer: 5
   m_Name: ScoreSlider
   m_TagString: Untagged
@@ -159,9 +160,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1200666911505821230}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 50
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -177,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bccd2a4a12858419375d4032ac9499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: {fileID: 11400000, guid: e539c41c4153ec24783f866bd1e560f2, type: 2}
   scoreData: {fileID: 11400000, guid: 680400d3b96ae9849abe2479e9395af6, type: 2}
 --- !u!114 &1200666911228108944
 MonoBehaviour:
@@ -223,6 +225,33 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1200666911228108945}
         m_MethodName: OnScoreChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6070727659688568503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200666911228108957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611515263345a1b48a28832d845ce8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 86631dc3470be5349989a84e6356c39d, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1200666911228108945}
+        m_MethodName: OnGameStarted
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

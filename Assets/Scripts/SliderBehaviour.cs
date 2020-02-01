@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SliderBehaviour : MonoBehaviour
 {
+    [SerializeField] private GameEvent gameOver;
     [SerializeField] private ScoreCounter scoreData;
     private Slider _slider;
 
@@ -15,8 +13,17 @@ public class SliderBehaviour : MonoBehaviour
         _slider = GetComponent<Slider>();
     }
 
+    public void OnGameStarted()
+    {
+        scoreData.Score = 0;
+        _slider.value = scoreData.Score;
+        _slider.maxValue = scoreData.MaxScore;
+    }
+
     public void OnScoreChanged()
     {
         _slider.value = scoreData.Score;
+        if (scoreData.Score >= scoreData.MaxScore)
+            gameOver.Raise();
     }
 }

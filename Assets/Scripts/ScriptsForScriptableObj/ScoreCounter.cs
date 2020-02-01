@@ -24,4 +24,19 @@ public class ScoreCounter : ScriptableObject
         }
     }
 
+    [SerializeField] 
+    private int maxScore;
+
+    public int MaxScore
+    {
+        get
+        {
+            return maxScore;
+        }
+        set
+        {
+            if (value > 0)
+                maxScore = value;
+        }
+    }
 }

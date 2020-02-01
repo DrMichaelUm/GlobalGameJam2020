@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ScoreData
   m_EditorClassIdentifier: 
   score: 0
+  maxScore: 100

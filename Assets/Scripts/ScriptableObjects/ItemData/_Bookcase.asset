@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: _Bookcase
   m_EditorClassIdentifier: 
   itemHP: 80
-  itemCost: 3
+  itemCost: 6
   itemSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  damagedItemSprite: {fileID: 0}
+  destroyedItemSprite: {fileID: 0}

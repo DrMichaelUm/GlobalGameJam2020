@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &599840701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599840702}
+  - component: {fileID: 599840703}
+  m_Layer: 8
+  m_Name: OnItemRepeirEventListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &599840702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599840701}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5229393669819210365}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &599840703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599840701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611515263345a1b48a28832d845ce8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 20795e9d90d42594186205a0ccbda03a, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5229393669819210362}
+        m_MethodName: ChangeDamage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 680400d3b96ae9849abe2479e9395af6,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: ScoreCounter, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5229393669652403111
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +200,7 @@ Transform:
   - {fileID: 5229393669652403108}
   - {fileID: 5229393671180191350}
   - {fileID: 5229393669656895008}
+  - {fileID: 599840702}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -267,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c60fa42cb309aa4e9d7b135df31b2d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repairCastTriggerEventListener: {fileID: 5229393671180191353}
+  repairGunEffectEventListener: {fileID: 5229393671180191353}
   itemDestroyedEventListener: {fileID: 5229393669656895011}
   destroyerData: {fileID: 11400000, guid: 5cc48a186d29c8048885bd123b5a6808, type: 2}
   OnDestroySkillCasted: {fileID: 11400000, guid: 36cee66e325f38a49a2d9850f8fbf533,
@@ -284,7 +344,7 @@ GameObject:
   - component: {fileID: 5229393671180191350}
   - component: {fileID: 5229393671180191351}
   m_Layer: 8
-  m_Name: OnRepairCastTriggerEventListener
+  m_Name: OnRepairEffectEventListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

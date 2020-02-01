@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyerBehaviour : MonoBehaviour, IPlayable
 {
     [SerializeField]
-    private GameObject repairCastTriggerEventListener;
+    private GameObject repairGunEffectEventListener;
     [SerializeField]
     private GameObject itemDestroyedEventListener;
 
@@ -22,9 +22,10 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
 
     private void Start()
     {
-        repairCastTriggerEventListener.SetActive(false);
+        repairGunEffectEventListener.SetActive(false);
         itemDestroyedEventListener.SetActive(false);
-        startDamage = destroyerData.AttackPower;
+        destroyerData.AttackPower = destroyerData.StartAttackPower;
+        startDamage = destroyerData.StartAttackPower;
     }
 
     private void Update()
@@ -37,8 +38,8 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //TODO прописать условие для тэга коллайдера области урона ремонтника
-        repairCastTriggerEventListener.SetActive(true);
+        if (collision.CompareTag("DestroyWave"))
+            repairGunEffectEventListener.SetActive(true);
         if (collision.CompareTag("Item"))
             itemDestroyedEventListener.SetActive(true);
 
@@ -46,8 +47,8 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //TODO прописать условие для тэга коллайдера области урона ремонтника
-        repairCastTriggerEventListener.SetActive(false);
+        if (collision.CompareTag("DestroyWave"))
+            repairGunEffectEventListener.SetActive(false);
         if (collision.CompareTag("Item"))
             itemDestroyedEventListener.SetActive(false);
     }

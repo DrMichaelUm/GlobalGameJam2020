@@ -7,17 +7,26 @@ public class PlayerData : ScriptableObject
 {
     [SerializeField]
     private float attackPower;
-    
+    [SerializeField]
+    private float modifiedAttackPower;
     public float AttackPower
     {
         get
         {
-            return attackPower;
+            return modifiedAttackPower;
         }
 
         set
         {
-            attackPower = value;
+            modifiedAttackPower = value;
+        }
+    }
+
+    public float StartAttackPower
+    {
+        get
+        {
+            return attackPower;
         }
     }
     

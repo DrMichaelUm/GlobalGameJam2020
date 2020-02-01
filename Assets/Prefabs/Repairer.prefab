@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4974574281565597105}
   - component: {fileID: 4974574281565597104}
   m_Layer: 0
-  m_Name: Skill Radius
+  m_Name: Trap Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

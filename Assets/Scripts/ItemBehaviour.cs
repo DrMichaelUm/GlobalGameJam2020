@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class ItemBehaviour : MonoBehaviour
 {
-    private GameObject itemListener;
+    [SerializeField]
+    private GameObject itemDestroyListener;
+    [SerializeField]
+    private GameObject itemRepairListener;
+
+    [SerializeField]
+    private GameEvent OnItemDestroyed;
+    [SerializeField]
+    private GameEvent OnItemRepaired;
 
     [SerializeField]
     private ItemData itemData;
     [SerializeField]
-    private DestroyedItemCounter destroyedItemCounter;
+    private ScoreCounter scoreCounter;
+    //[SerializeField]
+    //private PlayerData destroyerData;
+    //[SerializeField]
+    //private PlayerData repayerData;
 
     private float itemHp;
     private int itemCost;
@@ -20,8 +32,8 @@ public class ItemBehaviour : MonoBehaviour
 
     private void Start()
     {
-        itemListener = GetComponentInChildren<GameEventListener>().gameObject;
-        itemListener.SetActive(false);
+        itemDestroyListener.SetActive(false);
+        itemRepairListener.SetActive(false);
         spRenderer = GetComponent<SpriteRenderer>();
         spRenderer.sprite = itemData.Sprite;
         itemHp = itemData.Hp;
@@ -30,19 +42,26 @@ public class ItemBehaviour : MonoBehaviour
         damaged = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //TODO прописать условие для тэга волны
-        itemListener.SetActive(true);
+        //Debug.Log("Item in zone!");
+        if (collision.CompareTag("DestroyWave"))
+        itemDestroyListener.SetActive(true);
+        //TODO прописать условие для тэга воздействия пушки ремонтника
+        //itemRepairListener.SetActive(true);
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        //TODO прописать условие для тэга волны
-        itemListener.SetActive(false);
+        //Debug.Log("Item out of zone");
+        if (collision.CompareTag("DestroyWave"))
+            itemDestroyListener.SetActive(false);
+        //TODO прописать условие для тэга воздействия пушки ремонтника
+        //itemRepairListener.SetActive(true);
+
     }
 
-    public void TakeDamage(float damage)
+    private void TakeDamage(float damage)
     {
         if (!destroyed)
         {
@@ -55,7 +74,9 @@ public class ItemBehaviour : MonoBehaviour
                 //TODO запустить анимацию, частицы и звук уничтожения
 
                 spRenderer.sprite = itemData.DestroyedSprite;
-                destroyedItemCounter.DeItemNum++;
+                scoreCounter.Score += itemCost;
+
+                OnItemDestroyed.Raise();
             }
             else
             {
@@ -65,7 +86,7 @@ public class ItemBehaviour : MonoBehaviour
         }
     }
 
-    public void TakeRepairment(float repairPower)
+    private void TakeRepairment(float repairPower)
     {
         if (damaged || destroyed)
         {
@@ -73,14 +94,28 @@ public class ItemBehaviour : MonoBehaviour
             destroyed = false;
             if (itemHp >= itemData.Hp)
             {
+                //TODO запустить анимацию, частицы и звук исцеления
                 itemHp = itemData.Hp;
                 damaged = false;
                 spRenderer.sprite = itemData.Sprite;
+                scoreCounter.Score -= itemCost;
+
+                OnItemRepaired.Raise();
             }
             else
             {
                 spRenderer.sprite = itemData.DamagedSprite;
             }
         }
+    }
+
+    public void TakeDamage(PlayerData destroyerData)
+    {
+        TakeDamage(destroyerData.AttackPower);
+    }
+
+    public void TakeRepairment(PlayerData repayerData)
+    {
+        TakeRepairment(repayerData.AttackPower);
     }
 }

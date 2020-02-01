@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: _DestroyedItemCounter
-  m_EditorClassIdentifier: Assembly-CSharp::DestroyedItemCounter
-  destroedItemNumber: 0
+  m_Script: {fileID: 11500000, guid: d50c88fd709b4f14cbd9eb3c849c1b48, type: 3}
+  m_Name: ScoreData
+  m_EditorClassIdentifier: 
+  score: 0

@@ -250,6 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3228586111068078722}
   - component: {fileID: 3226970912373130987}
+  - component: {fileID: 6480330324556352688}
   m_Layer: 0
   m_Name: Gun Skill
   m_TagString: Untagged
@@ -297,3 +298,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6480330324556352688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8871489337046500732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ed6fdef1d2389243bcd0ba629202bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnRepairGunSkillCasted: {fileID: 11400000, guid: 37401dbdb73a7cf468acd0b37161c732,
+    type: 2}

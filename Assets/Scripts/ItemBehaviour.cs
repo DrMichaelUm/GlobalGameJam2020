@@ -44,19 +44,19 @@ public class ItemBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //TODO прописать условие для тэга волны
-        Debug.Log("Item in zone!");
+        //Debug.Log("Item in zone!");
+        if (collision.CompareTag("DestroyWave"))
         itemDestroyListener.SetActive(true);
-        //TODO прописать условие для тэга урона ремонтника
+        //TODO прописать условие для тэга воздействия пушки ремонтника
         //itemRepairListener.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //TODO прописать условие для тэга волны
-        Debug.Log("Item out of zone");
-        itemDestroyListener.SetActive(false);
-        //TODO прописать условие для тэга урона ремонтника
+        //Debug.Log("Item out of zone");
+        if (collision.CompareTag("DestroyWave"))
+            itemDestroyListener.SetActive(false);
+        //TODO прописать условие для тэга воздействия пушки ремонтника
         //itemRepairListener.SetActive(true);
 
     }

@@ -39,8 +39,8 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
     {
         //TODO прописать условие для тэга коллайдера области урона ремонтника
         repairCastTriggerEventListener.SetActive(true);
-        //TODO прописать условие для тэга предметов
-        itemDestroyedEventListener.SetActive(true);
+        if (collision.CompareTag("Item"))
+            itemDestroyedEventListener.SetActive(true);
 
     }
 
@@ -48,8 +48,8 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
     {
         //TODO прописать условие для тэга коллайдера области урона ремонтника
         repairCastTriggerEventListener.SetActive(false);
-        //TODO прописать условие для тэга предметов
-        itemDestroyedEventListener.SetActive(false);
+        if (collision.CompareTag("Item"))
+            itemDestroyedEventListener.SetActive(false);
     }
     public void Skill()
     {

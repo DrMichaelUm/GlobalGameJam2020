@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour, IMovable
             if (Input.GetKey (KeyCode.DownArrow))
                 movement.y = -1;
         }
+
         return movement;
     }
     public void Move(Rigidbody2D rb, float speed, Vector2 movement)

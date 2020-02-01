@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class PlayerRotation : MonoBehaviour, IRotatible
+public class FixerRotation : MonoBehaviour, IRotatible
 {
-    void Update()
+    void FixedUpdate()
     {
         RotateTo (GetDirection());
     }
@@ -17,6 +17,6 @@ public class PlayerRotation : MonoBehaviour, IRotatible
 
     public void RotateTo (float rotation)
     {
-        transform.rotation = Quaternion.Euler (0f, 0f, rotation);
+        transform.rotation = Quaternion.Euler (0f, 0f, rotation - 90);
     }
 }

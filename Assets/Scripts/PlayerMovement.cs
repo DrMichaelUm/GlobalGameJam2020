@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour, IMovable
     private Rigidbody2D rb;
     //private Animator animator;
 
-    private Vector2 movement;
+    [HideInInspector]
+    public Vector2 movement { get; private set; }
 
     enum InputMethod
     {

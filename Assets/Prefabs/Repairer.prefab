@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2824641023754724511}
   - component: {fileID: 3694706868911238826}
-  - component: {fileID: 701083869318152754}
   m_Layer: 0
   m_Name: Gun Radius
   m_TagString: RepairWave
@@ -58,20 +57,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 1}
   m_EdgeRadius: 0
---- !u!114 &701083869318152754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4333908062172506481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 582ea0a9967f4e549bee3d714c9823cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnRepairGunSkillCasted: {fileID: 11400000, guid: 37401dbdb73a7cf468acd0b37161c732,
-    type: 2}
 --- !u!1 &4974574281055550722
 GameObject:
   m_ObjectHideFlags: 0

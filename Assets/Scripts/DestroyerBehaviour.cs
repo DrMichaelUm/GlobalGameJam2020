@@ -29,7 +29,7 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Skill();
         }

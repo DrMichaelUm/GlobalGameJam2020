@@ -116,11 +116,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5229393669819210365}
   - component: {fileID: 5229393669819210364}
-  - component: {fileID: 5229393669819210367}
   - component: {fileID: 5229393669819210366}
+  - component: {fileID: 4843449155327795976}
   - component: {fileID: 5229393669819210625}
   - component: {fileID: 5229393669819210362}
-  - component: {fileID: 1399915908}
   - component: {fileID: 1641120825}
   - component: {fileID: 1641120833}
   - component: {fileID: 374696853249358116}
@@ -199,32 +198,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5229393669819210367
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5229393669819210624}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.241301, y: 10.24}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 7, y: 7}
-  m_EdgeRadius: 0
 --- !u!50 &5229393669819210366
 Rigidbody2D:
   serializedVersion: 4
@@ -246,6 +219,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &4843449155327795976
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5229393669819210624}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.26, y: 0.65}
+  serializedVersion: 2
+  m_Radius: 2.46
 --- !u!114 &5229393669819210625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1641120825}
-  moveSpeed: 1
+  moveSpeed: 20
   inputMethod: 0
 --- !u!114 &5229393669819210362
 MonoBehaviour:
@@ -281,34 +270,6 @@ MonoBehaviour:
     type: 2}
   OnDestroyerTrapped: {fileID: 11400000, guid: 44bbf499c6bf83644b106bf0e2277c24, type: 2}
   damageBonusCofficient: 1
---- !u!114 &1399915908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5229393669819210624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611515263345a1b48a28832d845ce8ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 44bbf499c6bf83644b106bf0e2277c24, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5229393669819210362}
-        m_MethodName: OnTrapped
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 5ba80bd3c6bdcc341b748291fed7caba,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: TrapData, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!95 &1641120825
 Animator:
   serializedVersion: 3

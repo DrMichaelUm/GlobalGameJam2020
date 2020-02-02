@@ -352,6 +352,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1974235979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4974574281055550722, guid: 8a6b9961ee522f042b06ed44ad19a6fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 331395827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1974235987
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974235979}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5.1206503
 --- !u!1001 &2655691565337975105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -359,10 +381,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 695984063647761349, guid: 07158ef9a81117c4588472c6f1bf651f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 768253394449249245, guid: 07158ef9a81117c4588472c6f1bf651f,
         type: 3}
       propertyPath: m_Name
       value: Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433008803331423801, guid: 07158ef9a81117c4588472c6f1bf651f,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8075682878472576922, guid: 07158ef9a81117c4588472c6f1bf651f,
         type: 3}
@@ -419,5 +451,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8288986082248457349, guid: 07158ef9a81117c4588472c6f1bf651f,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1558094636895572954, guid: 07158ef9a81117c4588472c6f1bf651f, type: 3}
+    - {fileID: 5433008803331423801, guid: 07158ef9a81117c4588472c6f1bf651f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07158ef9a81117c4588472c6f1bf651f, type: 3}

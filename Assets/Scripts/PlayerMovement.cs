@@ -2,8 +2,8 @@
 
 public class PlayerMovement : MonoBehaviour, IMovable
 {
-    [SerializeField]
-    private float moveSpeed = 1f;
+    [SerializeField] private Animator animator;
+    [SerializeField] private float moveSpeed = 1f;
 
     public float MoveSpeed
     {
@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour, IMovable
     }
 
     private Rigidbody2D rb;
-    //private Animator animator;
 
     [HideInInspector]
     public Vector2 movement { get; private set; }
@@ -86,5 +85,9 @@ public class PlayerMovement : MonoBehaviour, IMovable
 
     private void SetMovementAnimation()
     {
+        if (movement.x == 0 && movement.y == 0)
+            animator.SetBool ("isMoving", false);
+        else
+            animator.SetBool ("isMoving", true);
     }
 }

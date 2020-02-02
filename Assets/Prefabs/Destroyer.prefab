@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5229393669652403108}
   - component: {fileID: 5229393669652403109}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: DestroyWave
   m_TagString: DestroyWave
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5229393669656895008}
   - component: {fileID: 5229393669656895009}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OnItemDestroyedEventListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5229393671180191350}
   - component: {fileID: 5229393671180191351}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OnRepairCastTriggerEventListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}

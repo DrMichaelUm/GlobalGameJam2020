@@ -442,7 +442,8 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 9
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 877892580, guid: 8a6b9961ee522f042b06ed44ad19a6fc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8a6b9961ee522f042b06ed44ad19a6fc, type: 3}
 --- !u!4 &877892590 stripped
 Transform:
@@ -595,7 +596,7 @@ MonoBehaviour:
   m_MaximumDistance: 5000
   m_MinimumFOV: 3
   m_MaximumFOV: 60
-  m_MinimumOrthoSize: 20
+  m_MinimumOrthoSize: 22
   m_MaximumOrthoSize: 100
 --- !u!114 &933970391
 MonoBehaviour:
@@ -721,7 +722,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.25882354, g: 0.18823531, b: 0.13333334, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -738,7 +739,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 22
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

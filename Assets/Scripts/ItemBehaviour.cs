@@ -6,8 +6,8 @@ public class ItemBehaviour : MonoBehaviour
 {
     [SerializeField]
     private GameObject itemDestroyListener;
-    [SerializeField]
-    private GameObject itemRepairListener;
+    //[SerializeField]
+    public GameObject itemRepairListener;
 
     [SerializeField]
     private GameEvent OnItemDestroyed;

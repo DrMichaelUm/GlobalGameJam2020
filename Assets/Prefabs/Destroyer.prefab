@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 5229393669819210366}
   - component: {fileID: 5229393669819210625}
   - component: {fileID: 5229393669819210362}
+  - component: {fileID: 1399915908}
   m_Layer: 8
   m_Name: Destroyer
   m_TagString: Destroyer
@@ -270,9 +271,39 @@ MonoBehaviour:
   repairCastTriggerEventListener: {fileID: 5229393671180191353}
   itemDestroyedEventListener: {fileID: 5229393669656895011}
   destroyerData: {fileID: 11400000, guid: 5cc48a186d29c8048885bd123b5a6808, type: 2}
+  repeirerData: {fileID: 11400000, guid: da306c0e2c339db458c6494e4fa911bf, type: 2}
   OnDestroySkillCasted: {fileID: 11400000, guid: 36cee66e325f38a49a2d9850f8fbf533,
     type: 2}
+  OnDestroyerTrapped: {fileID: 11400000, guid: 44bbf499c6bf83644b106bf0e2277c24, type: 2}
   damageBonusCofficient: 1
+--- !u!114 &1399915908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5229393669819210624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611515263345a1b48a28832d845ce8ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 44bbf499c6bf83644b106bf0e2277c24, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5229393669819210362}
+        m_MethodName: OnTrapped
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 5ba80bd3c6bdcc341b748291fed7caba,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: TrapData, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5229393671180191353
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,4 +350,15 @@ MonoBehaviour:
   gameEvent: {fileID: 11400000, guid: 37401dbdb73a7cf468acd0b37161c732, type: 2}
   response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5229393669819210362}
+        m_MethodName: KnockBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4974574281055550721}
   - component: {fileID: 2017281699}
   - component: {fileID: 2017281700}
+  - component: {fileID: 1211909346733088571}
   m_Layer: 0
   m_Name: Repairer
   m_TagString: Repairer
@@ -164,8 +165,9 @@ MonoBehaviour:
   trapData: {fileID: 11400000, guid: 5ba80bd3c6bdcc341b748291fed7caba, type: 2}
   trapPrefab: {fileID: 6504398178018461597, guid: 34394ec4a76b8f449a8b2e328883a993,
     type: 3}
+  trapSkillCollider: {fileID: 4974574281565597104}
   trapsHolder: {fileID: 0}
-  _aimed: 0
+  _objectsPool: {fileID: 11400000, guid: bd11c4c79f6d60d43a71329db4945c04, type: 2}
 --- !u!114 &2017281700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +195,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1211909346733088571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974574281055550722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3824244089745434eb9da70a59e2831e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4974574281565597106
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +218,7 @@ GameObject:
   - component: {fileID: 4974574281565597105}
   - component: {fileID: 4974574281565597104}
   m_Layer: 0
-  m_Name: Trap Radius
+  m_Name: Trap Skill Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +253,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.5
 --- !u!1 &8871489337046500732
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +267,7 @@ GameObject:
   - component: {fileID: 6480330324556352688}
   m_Layer: 0
   m_Name: Gun Skill
-  m_TagString: Untagged
+  m_TagString: RepairWave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

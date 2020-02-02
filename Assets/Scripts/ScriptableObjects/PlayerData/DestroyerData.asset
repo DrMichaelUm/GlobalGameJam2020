@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DestroyerData
   m_EditorClassIdentifier: 
   attackPower: 5
+  knockStrength: 7

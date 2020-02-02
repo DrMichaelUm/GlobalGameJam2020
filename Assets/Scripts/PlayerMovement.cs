@@ -5,6 +5,12 @@ public class PlayerMovement : MonoBehaviour, IMovable
     [SerializeField]
     private float moveSpeed = 1f;
 
+    public float MoveSpeed
+    {
+        get => moveSpeed;
+        set => moveSpeed = value;
+    }
+
     private Rigidbody2D rb;
     //private Animator animator;
 

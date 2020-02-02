@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FixerRotation : MonoBehaviour, IRotatible
+public class RepairerRotation : MonoBehaviour, IRotatible
 {
     void FixedUpdate()
     {

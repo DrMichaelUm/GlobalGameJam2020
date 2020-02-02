@@ -70,7 +70,7 @@ public class DestroyerBehaviour : PlayerAffects, IPlayable
 
     public void OnTrapped (TrapData trapData)
     {
-        StartCoroutine (OnTrappedCoroutine (2));
+        StartCoroutine (OnTrappedCoroutine (trapData.StunTime));
     }
 
     private IEnumerator OnTrappedCoroutine (float stunTime)

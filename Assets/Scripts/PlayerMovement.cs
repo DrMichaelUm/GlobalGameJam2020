@@ -80,11 +80,11 @@ public class PlayerMovement : MonoBehaviour, IMovable
 
     public void Move (Rigidbody2D rb, float speed, Vector2 movement)
     {
-        if (inputMethod == InputMethod.WASD)
+        //if (inputMethod == InputMethod.WASD)
             rb.MovePosition (rb.position + movement * speed * Time.deltaTime);
 
-        else if (inputMethod == InputMethod.ARROWS)
-            rb.MovePosition (rb.position + (Vector2) transform.TransformDirection (movement * speed * Time.deltaTime));
+        //else if (inputMethod == InputMethod.ARROWS)
+           // rb.MovePosition (rb.position + (Vector2) transform.TransformDirection (movement * speed * Time.deltaTime));
     }
 
     private void SetMovementAnimation()

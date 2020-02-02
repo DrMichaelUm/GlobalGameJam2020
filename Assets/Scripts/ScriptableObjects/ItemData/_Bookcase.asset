@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemHP: 80
   itemCost: 3
-  itemSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  itemSprite: {fileID: 21300000, guid: e9d92e76e80a43c4f98a56784cc21f1d, type: 3}
+  damagedItemSprite: {fileID: 21300000, guid: ccb6571f47409994c9b489d67c0fc673, type: 3}
+  destroyedItemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

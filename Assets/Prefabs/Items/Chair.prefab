@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6848879899884057462}
   - component: {fileID: 3255297560634822229}
   - component: {fileID: 2099156812678438924}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Chair
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6848879899902251444}
   - component: {fileID: 6848879899902251445}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OnDestroyEventListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6231288984780974148}
   - component: {fileID: 810665907341489260}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OnRepairEventListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}

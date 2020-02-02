@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1641120825}
-  moveSpeed: 20
+  moveSpeed: 30
   inputMethod: 0
 --- !u!114 &5229393669819210362
 MonoBehaviour:
@@ -375,7 +375,7 @@ MonoBehaviour:
   OnDestroySkillCasted: {fileID: 11400000, guid: 36cee66e325f38a49a2d9850f8fbf533,
     type: 2}
   OnDestroyerTrapped: {fileID: 11400000, guid: 44bbf499c6bf83644b106bf0e2277c24, type: 2}
-  damageBonusCofficient: 1
+  damageBonusCofficient: 0.3
 --- !u!95 &1641120825
 Animator:
   serializedVersion: 3

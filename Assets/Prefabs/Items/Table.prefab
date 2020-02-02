@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 191691582302948777}
   - component: {fileID: 8108799725272756362}
   - component: {fileID: 4649032574964162259}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Table
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 191691582318309227}
   - component: {fileID: 191691582318309226}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OnDestroyEventListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 854806312877545115}
   - component: {fileID: 6261426086461344435}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OnRepairEventListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}

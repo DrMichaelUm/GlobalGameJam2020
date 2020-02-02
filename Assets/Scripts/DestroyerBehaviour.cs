@@ -16,7 +16,7 @@ public class DestroyerBehaviour : PlayerAffects, IPlayable
 
     [SerializeField] private float damageBonusCofficient;
     
-    private float startDamage;
+    private float startDamage = 20;
 
     private PlayerMovement _playerMovement;
 
@@ -24,11 +24,14 @@ public class DestroyerBehaviour : PlayerAffects, IPlayable
 
     private void Start()
     {
+        destroyerData.AttackPower = startDamage;
+        
         repairCastTriggerEventListener.SetActive (false);
         itemDestroyedEventListener.SetActive (false);
         startDamage = destroyerData.AttackPower;
         rb = GetComponent<Rigidbody2D>();
         _playerMovement = GetComponent<PlayerMovement>();
+
     }
 
     private void Update()

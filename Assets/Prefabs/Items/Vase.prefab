@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2350446195954045034}
   - component: {fileID: 9054375267018280002}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OnRepairEventListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3020668464417368474}
   - component: {fileID: 3020668464417368475}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OnDestroyEventListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 3020668464433466200}
   - component: {fileID: 6614285850483848827}
   - component: {fileID: 7765958320613283874}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Vase
   m_TagString: Item
   m_Icon: {fileID: 0}

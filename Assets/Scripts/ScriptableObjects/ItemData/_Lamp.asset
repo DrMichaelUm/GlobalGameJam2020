@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d330ce61ee5994fa6217d603a4efac, type: 3}
   m_Name: _Lamp
   m_EditorClassIdentifier: 
-  itemHP: 5
+  itemHP: 20
   itemCost: 1
   itemSprite: {fileID: 21300000, guid: e65d5ca5714bf534b97b8bc4de19b4ae, type: 3}
   damagedItemSprite: {fileID: 21300000, guid: e65d5ca5714bf534b97b8bc4de19b4ae, type: 3}

@@ -9,6 +9,7 @@ TagManager:
   - Repairer
   - DestroyWave
   - RepairWave
+  - TrapSkill
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - 
   - 
   - Player
-  - 
-  - 
+  - RepairSkillZone
+  - DestroyerSkillZone
   - 
   - 
   - 

@@ -47,8 +47,8 @@ public class ItemBehaviour : MonoBehaviour
         //Debug.Log("Item in zone!");
         if (collision.CompareTag("DestroyWave"))
         itemDestroyListener.SetActive(true);
-        //TODO прописать условие для тэга воздействия пушки ремонтника
-        //itemRepairListener.SetActive(true);
+        if(collision.CompareTag("RepairWave"))
+        itemRepairListener.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -56,8 +56,8 @@ public class ItemBehaviour : MonoBehaviour
         //Debug.Log("Item out of zone");
         if (collision.CompareTag("DestroyWave"))
             itemDestroyListener.SetActive(false);
-        //TODO прописать условие для тэга воздействия пушки ремонтника
-        //itemRepairListener.SetActive(true);
+        if (collision.CompareTag("RepairWave"))
+            itemRepairListener.SetActive(false);
 
     }
 
@@ -69,13 +69,12 @@ public class ItemBehaviour : MonoBehaviour
             if (itemHp <= 0)
             {
                 itemHp = 0;
+                damaged = true;
                 destroyed = true;
-                damaged = false;
+
                 //TODO запустить анимацию, частицы и звук уничтожения
-
-                spRenderer.sprite = itemData.DestroyedSprite;
                 scoreCounter.Score += itemCost;
-
+                spRenderer.sprite = itemData.DestroyedSprite;
                 OnItemDestroyed.Raise();
             }
             else
@@ -88,23 +87,23 @@ public class ItemBehaviour : MonoBehaviour
 
     private void TakeRepairment(float repairPower)
     {
-        if (damaged || destroyed)
+        if (destroyed || damaged)
         {
             itemHp += repairPower;
-            destroyed = false;
+
             if (itemHp >= itemData.Hp)
             {
                 //TODO запустить анимацию, частицы и звук исцеления
                 itemHp = itemData.Hp;
                 damaged = false;
                 spRenderer.sprite = itemData.Sprite;
-                scoreCounter.Score -= itemCost;
-
-                OnItemRepaired.Raise();
             }
-            else
+            else if (itemHp >= itemData.Hp / 2)
             {
+                destroyed = false;
+                scoreCounter.Score -= itemCost;
                 spRenderer.sprite = itemData.DamagedSprite;
+                OnItemRepaired.Raise();
             }
         }
     }

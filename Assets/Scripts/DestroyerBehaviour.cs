@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyerBehaviour : MonoBehaviour, IPlayable
+public class DestroyerBehaviour : PlayerAffects, IPlayable
 {
     [SerializeField] private GameObject repairCastTriggerEventListener;
     [SerializeField] private GameObject itemDestroyedEventListener;
@@ -17,10 +17,6 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
     private float startDamage;
 
     private PlayerMovement _playerMovement;
-    private Rigidbody2D rb;
-    private Vector2 knockForceDirection;
-    private bool isKnocked = false;
-    private float timer = 0.55f;
 
     private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
@@ -74,7 +70,7 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
 
     public void OnTrapped (TrapData trapData)
     {
-        StartCoroutine (OnTrappedCoroutine (2));
+        StartCoroutine (OnTrappedCoroutine (trapData.StunTime));
     }
 
     private IEnumerator OnTrappedCoroutine (float stunTime)
@@ -92,36 +88,8 @@ public class DestroyerBehaviour : MonoBehaviour, IPlayable
         _playerMovement.MoveSpeed = normalSpeed;
     }
 
-    private IEnumerator AddImpulseProcess()
-    {
-        Vector2 forceDirection = Random.insideUnitCircle.normalized;
-        float speed = repeirerData.Strength;
-
-        while (timer >= 0)
-        {
-            timer -= Time.deltaTime;
-            rb.AddForce (forceDirection * speed, ForceMode2D.Force);
-            speed -= 5f;
-
-            yield return waitForFixedUpdate;
-        }
-
-        timer = 0.55f;
-    }
-
-    private IEnumerator KnockingImmuneTime()
-    {
-        yield return new WaitForSeconds (3f);
-        isKnocked = false;
-    }
-
     public void KnockBack()
     {
-        isKnocked = true;
-        Debug.Log ("KnockingBack!");
-        repairCastTriggerEventListener.SetActive (false);
-        // StopCoroutine(AddImpulseProcess());
-        StartCoroutine (AddImpulseProcess());
-        StartCoroutine (KnockingImmuneTime());
+        KnockBack(repairCastTriggerEventListener, repeirerData);
     }
 }

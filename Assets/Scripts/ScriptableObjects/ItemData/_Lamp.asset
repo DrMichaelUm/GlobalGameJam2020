@@ -15,7 +15,8 @@ MonoBehaviour:
   itemHP: 5
   itemCost: 1
   itemSprite: {fileID: 21300000, guid: e65d5ca5714bf534b97b8bc4de19b4ae, type: 3}
-  damagedItemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  destroyedItemSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  damagedItemSprite: {fileID: 21300000, guid: e65d5ca5714bf534b97b8bc4de19b4ae, type: 3}
+  destroyedItemSprite: {fileID: 21300000, guid: f07b7295d7ca34c4ea2bda0c4edec013,
+    type: 3}
   colliderX: 5
   colliderY: 5

@@ -29,13 +29,16 @@ public class ItemBehaviour : MonoBehaviour
     private bool damaged;
 
     private SpriteRenderer spRenderer;
+    private BoxCollider2D collider;
 
     private void Start()
     {
         itemDestroyListener.SetActive(false);
         itemRepairListener.SetActive(false);
         spRenderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<BoxCollider2D>();
         spRenderer.sprite = itemData.Sprite;
+        collider.size = new Vector2(itemData.ColliderX, itemData.ColliderY);
         itemHp = itemData.Hp;
         itemCost = itemData.Cost;
         destroyed = false;

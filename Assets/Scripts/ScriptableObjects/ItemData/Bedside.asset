@@ -17,3 +17,5 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: fc8662b02ae082e44b5acee03f6dc2da, type: 3}
   damagedItemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   destroyedItemSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  colliderX: 6
+  colliderY: 6

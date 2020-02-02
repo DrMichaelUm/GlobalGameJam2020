@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Trap : MonoBehaviour//, IPlayable
+public class Trap : MonoBehaviour
 {
     [SerializeField] private TrapData trapData;
 
@@ -42,16 +42,12 @@ public class Trap : MonoBehaviour//, IPlayable
         gameObject.SetActive (false);
     }
 
-    //set to 'OnDestroyerTrapped'
-    // public void Skill()
-    // {
-    //     //TODO EFFECT
-    //     Debug.Log ("TRAPPED");
-    // }
-
     private void OnTriggerEnter2D (Collider2D other)
     {
         if (other.CompareTag ("Destroyer"))
+        {
             OnDestroyerTrapped.Raise();
+            DeactivateImmediately();
+        }
     }
 }

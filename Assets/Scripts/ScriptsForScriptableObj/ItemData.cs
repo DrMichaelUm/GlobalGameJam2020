@@ -5,16 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item Data", menuName = "Item Data", order = 53)]
 public class ItemData : ScriptableObject
 {
-    [SerializeField]
-    private float itemHP;
-    [SerializeField]
-    private int itemCost;
-    [SerializeField]
-    private Sprite itemSprite;
-    [SerializeField]
-    private Sprite damagedItemSprite;
-    [SerializeField]
-    private Sprite destroyedItemSprite;
+    [SerializeField] private float itemHP;
+    [SerializeField] private int itemCost;
+    [SerializeField] private Sprite itemSprite;
+    [SerializeField] private Sprite damagedItemSprite;
+    [SerializeField] private Sprite destroyedItemSprite;
+    [SerializeField] private float colliderX;
+    [SerializeField] private float colliderY;
 
     public float Hp
     {
@@ -53,6 +50,31 @@ public class ItemData : ScriptableObject
         get
         {
             return destroyedItemSprite;
+        }
+    }
+    public float ColliderX
+    {
+        get
+        {
+            return colliderX;
+        }
+
+        set
+        {
+            colliderX = value;
+        }
+    }
+
+    public float ColliderY
+    {
+        get
+        {
+            return colliderY;
+        }
+
+        set
+        {
+            colliderY = value;
         }
     }
 

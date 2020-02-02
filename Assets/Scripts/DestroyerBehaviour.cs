@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DestroyerBehaviour : PlayerAffects, IPlayable
 {
@@ -14,6 +15,7 @@ public class DestroyerBehaviour : PlayerAffects, IPlayable
     [SerializeField] private GameEvent OnDestroyerTrapped;
 
     [SerializeField] private float damageBonusCofficient;
+    
     private float startDamage;
 
     private PlayerMovement _playerMovement;

@@ -13,8 +13,7 @@ public class PlayerMovement : MonoBehaviour, IMovable
 
     private Rigidbody2D rb;
 
-    [HideInInspector]
-    public Vector2 movement { get; private set; }
+    [HideInInspector] public Vector2 movement { get; private set; }
 
     enum InputMethod
     {
@@ -22,8 +21,7 @@ public class PlayerMovement : MonoBehaviour, IMovable
         ARROWS
     }
 
-    [SerializeField]
-    private InputMethod inputMethod;
+    [SerializeField] private InputMethod inputMethod;
 
     private void Awake()
     {
@@ -40,13 +38,14 @@ public class PlayerMovement : MonoBehaviour, IMovable
 
     private void FixedUpdate()
     {
-        Move(rb, moveSpeed, movement);
+        Move (rb, moveSpeed, movement);
     }
 
-    Vector2 DetectMovement(Vector2 movement)
+    Vector2 DetectMovement (Vector2 movement)
     {
         movement.x = 0;
         movement.y = 0;
+
         if (inputMethod == InputMethod.WASD)
         {
             if (Input.GetKey (KeyCode.D))
@@ -78,9 +77,14 @@ public class PlayerMovement : MonoBehaviour, IMovable
 
         return movement;
     }
-    public void Move(Rigidbody2D rb, float speed, Vector2 movement)
+
+    public void Move (Rigidbody2D rb, float speed, Vector2 movement)
     {
-        rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+        if (inputMethod == InputMethod.WASD)
+            rb.MovePosition (rb.position + movement * speed * Time.deltaTime);
+
+        else if (inputMethod == InputMethod.ARROWS)
+            rb.MovePosition (rb.position + (Vector2) transform.TransformDirection (movement * speed * Time.deltaTime));
     }
 
     private void SetMovementAnimation()

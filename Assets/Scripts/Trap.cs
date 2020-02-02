@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Trap : MonoBehaviour
+public class Trap : MonoBehaviour    
 {
     [SerializeField] private TrapData trapData;
 

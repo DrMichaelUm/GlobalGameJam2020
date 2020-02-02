@@ -9,7 +9,10 @@ public class Trap : MonoBehaviour
     [SerializeField] private GameEvent OnTrapDeactivated;
     [SerializeField] private GameEvent OnDestroyerTrapped;
 
+    [SerializeField] private ParticleSystem trapParticles;
+
     private float lifetime;
+    private CircleCollider2D _circleCollider2D;
 
     private void Awake()
     {
@@ -26,6 +29,7 @@ public class Trap : MonoBehaviour
     private void Init()
     {
         lifetime = trapData.Lifetime;
+        _circleCollider2D = GetComponent<CircleCollider2D>();
     }
 
     private IEnumerator Deactivate (float time)
@@ -39,6 +43,7 @@ public class Trap : MonoBehaviour
 
     public void DeactivateImmediately()
     {
+        _circleCollider2D.enabled = false;
         gameObject.SetActive (false);
     }
 
@@ -47,7 +52,9 @@ public class Trap : MonoBehaviour
         if (other.CompareTag ("Destroyer"))
         {
             OnDestroyerTrapped.Raise();
-            DeactivateImmediately();
+            StartCoroutine (Deactivate (trapData.StunTime));
+            //DeactivateImmediately();
+            trapParticles.Play();
         }
     }
 }

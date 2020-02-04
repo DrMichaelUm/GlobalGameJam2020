@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f84f7d21acaad459fac9a7b7fd30e6, type: 3}
   m_Name: DestroyerData
   m_EditorClassIdentifier: 
-  attackPower: 5
+  attackPower: 24
   knockStrength: 7

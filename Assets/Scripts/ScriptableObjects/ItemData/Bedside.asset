@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d330ce61ee5994fa6217d603a4efac, type: 3}
   m_Name: Bedside
   m_EditorClassIdentifier: 
-  itemHP: 30
+  itemHP: 50
   itemCost: 2
   itemSprite: {fileID: 21300000, guid: fc8662b02ae082e44b5acee03f6dc2da, type: 3}
-  damagedItemSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  destroyedItemSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  damagedItemSprite: {fileID: 21300000, guid: 5ec8237ac9b253d4a92ddb7c84ffcd0f, type: 3}
+  destroyedItemSprite: {fileID: 21300000, guid: 85d188c05cdabce4986126e504c27772,
+    type: 3}
   colliderX: 6
   colliderY: 6

@@ -7,7 +7,7 @@ public class SceneReloader : MonoBehaviour
 
     [SerializeField] private GlobalFlag wasGamePlayed;
 
-    private void Awake()
+    private void Start()
     {
         if (wasGamePlayed.Flag)
         {

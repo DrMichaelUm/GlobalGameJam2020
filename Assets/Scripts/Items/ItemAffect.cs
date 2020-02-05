@@ -27,6 +27,7 @@ public class ItemAffect : MonoBehaviour
     private int itemCost;
     private bool destroyed;
     private bool damaged;
+    private bool isScoreChanged = false;
 
     private SpriteRenderer spRenderer;
 
@@ -73,7 +74,7 @@ public class ItemAffect : MonoBehaviour
                 destroyed = true;
 
                 //TODO запустить анимацию, частицы и звук уничтожения
-                scoreCounter.Score += itemCost;
+                ChangeScoreByItemCost(true);
                 spRenderer.sprite = itemData.DestroyedSprite;
                 OnItemDestroyed.Raise();
             }
@@ -101,13 +102,29 @@ public class ItemAffect : MonoBehaviour
             else if (itemHp >= itemData.Hp / 2)
             {
                 destroyed = false;
-                scoreCounter.Score -= itemCost;
+                ChangeScoreByItemCost(false);
                 spRenderer.sprite = itemData.DamagedSprite;
                 OnItemRepaired.Raise();
             }
         }
     }
 
+    private void ChangeScoreByItemCost(bool mode)
+    {
+        if (mode)
+        {
+                scoreCounter.Score += itemCost;
+                isScoreChanged = false;
+        }
+        else
+        {
+            if (!isScoreChanged)
+            {
+                scoreCounter.Score -= itemCost;
+                isScoreChanged = true;
+            }
+        }
+    }
     public void TakeDamage(PlayerData destroyerData)
     {
         TakeDamage(destroyerData.AttackPower);

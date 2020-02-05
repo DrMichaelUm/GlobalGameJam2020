@@ -114,6 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5229393669652403108}
   - component: {fileID: 5229393669652403109}
+  - component: {fileID: 62906378}
   m_Layer: 10
   m_Name: DestroyWave
   m_TagString: DestroyWave
@@ -151,6 +152,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 10
+--- !u!114 &62906378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5229393669652403111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18a1ae42510c854298fb294f9c84464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDestroySkillCasted: {fileID: 11400000, guid: 36cee66e325f38a49a2d9850f8fbf533,
+    type: 2}
 --- !u!1 &5229393669656895011
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +243,7 @@ GameObject:
   - component: {fileID: 1641120833}
   - component: {fileID: 374696853249358116}
   - component: {fileID: 1180087941}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Destroyer
   m_TagString: Destroyer
   m_Icon: {fileID: 0}
@@ -291,7 +306,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_Sprite: {fileID: -5139892111290643411, guid: 30872d5d9ef6a534fbdd230cdecc3293,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -372,8 +387,6 @@ MonoBehaviour:
   itemDestroyedEventListener: {fileID: 5229393669656895011}
   destroyerData: {fileID: 11400000, guid: 5cc48a186d29c8048885bd123b5a6808, type: 2}
   repeirerData: {fileID: 11400000, guid: da306c0e2c339db458c6494e4fa911bf, type: 2}
-  OnDestroySkillCasted: {fileID: 11400000, guid: 36cee66e325f38a49a2d9850f8fbf533,
-    type: 2}
   OnDestroyerTrapped: {fileID: 11400000, guid: 44bbf499c6bf83644b106bf0e2277c24, type: 2}
   damageBonusCofficient: 0.3
 --- !u!95 &1641120825

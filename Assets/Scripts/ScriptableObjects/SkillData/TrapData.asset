@@ -15,3 +15,4 @@ MonoBehaviour:
   aimTrap: {fileID: 4673075374127773643, guid: 5f6495fb34999964fab7860f6547d01b, type: 3}
   stunTime: 2
   lifetime: 3
+  reloadTime: 5

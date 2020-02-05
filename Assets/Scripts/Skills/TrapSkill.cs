@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEditorInternal;
+using UnityEngine;
 
 public class TrapSkill : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class TrapSkill : MonoBehaviour
     private Camera _mainCamera;
 
     private bool _aimed = false;
+    private bool _reloaded = true;
 
     private void Awake()
     {
@@ -57,6 +60,7 @@ public class TrapSkill : MonoBehaviour
     {
         SpawnTrap (_aimTrap.transform.position);
         StopAim();
+        StartCoroutine (Reload());
     }
 
     private void SpawnTrap (Vector2 spawnPos)
@@ -72,6 +76,15 @@ public class TrapSkill : MonoBehaviour
         aimPos.z = 0;
 
         return aimPos;
+    }
+
+    private IEnumerator Reload()
+    {    
+        _reloaded = false;
+        
+        yield return new WaitForSeconds (trapData.ReloadTime);
+
+        _reloaded = true;
     }
 
     private void Update()
@@ -96,7 +109,7 @@ public class TrapSkill : MonoBehaviour
         }
 
         //first click - aim
-        if (Input.GetMouseButtonDown (1) && _aimed == false)
+        if (Input.GetMouseButtonDown (1) && _aimed == false && _reloaded)
         {
             Aim();
             _aimed = true;

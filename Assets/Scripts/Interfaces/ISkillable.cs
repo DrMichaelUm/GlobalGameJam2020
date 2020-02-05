@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPlayable
+public interface ISkillable
 {
     void Skill();
 }

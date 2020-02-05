@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DestroyerAffect : PlayerAffects
+public class DestroyerBehaviour : PlayerAffects, IPlayable
 {
     [SerializeField] private GameObject repairCastTriggerEventListener;
     [SerializeField] private GameObject itemDestroyedEventListener;
@@ -11,6 +11,7 @@ public class DestroyerAffect : PlayerAffects
     [SerializeField] private PlayerData destroyerData;
     [SerializeField] private PlayerData repeirerData;
 
+    [SerializeField] private GameEvent OnDestroySkillCasted;
     [SerializeField] private GameEvent OnDestroyerTrapped;
 
     [SerializeField] private float damageBonusCofficient;
@@ -33,7 +34,13 @@ public class DestroyerAffect : PlayerAffects
 
     }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown (KeyCode.Space))
+        {
+            Skill();
+        }
+    }
 
     private void OnTriggerEnter2D (Collider2D collision)
     {
@@ -53,6 +60,12 @@ public class DestroyerAffect : PlayerAffects
             itemDestroyedEventListener.SetActive (false);
     }
 
+    public void Skill()
+    {
+        //TODO Партикл и звук волны
+        Debug.Log ("Boom!");
+        OnDestroySkillCasted.Raise();
+    }
 
     public void ChangeDamage (ScoreCounter scoreCounter)
     {

@@ -120,7 +120,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7649796719962191973}
+      - m_Target: {fileID: 0}
         m_MethodName: TakeRepairment
         m_Mode: 2
         m_Arguments:
@@ -169,9 +169,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7649796719962191974}
   - component: {fileID: 7649796719962191975}
-  - component: {fileID: 7649796719962191973}
   - component: {fileID: 1731829284856137030}
   - component: {fileID: 2883466574908861215}
+  - component: {fileID: 6327543962650124434}
+  - component: {fileID: 2880036026840069401}
   m_Layer: 11
   m_Name: Lamp
   m_TagString: Item
@@ -246,24 +247,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7649796719962191973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7649796719962191968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f7b1a02bf6a5434197b3efe457a47b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDestroyListener: {fileID: 7649796719979338400}
-  itemRepairListener: {fileID: 5190549092540872836}
-  OnItemDestroyed: {fileID: 11400000, guid: 9bdddd0ecdc82374e85994717d29f7fe, type: 2}
-  OnItemRepaired: {fileID: 11400000, guid: 20795e9d90d42594186205a0ccbda03a, type: 2}
-  itemData: {fileID: 11400000, guid: bd6ec14f95745174aa593e7b13b941ee, type: 2}
-  scoreCounter: {fileID: 11400000, guid: 680400d3b96ae9849abe2479e9395af6, type: 2}
 --- !u!50 &1731829284856137030
 Rigidbody2D:
   serializedVersion: 4
@@ -311,6 +294,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6, y: 6}
   m_EdgeRadius: 0
+--- !u!114 &6327543962650124434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649796719962191968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829d315eae7cda4bb78ce0eea00a061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDestroyListener: {fileID: 7649796719979338400}
+  itemRepairListener: {fileID: 5190549092540872836}
+  OnItemDestroyed: {fileID: 11400000, guid: 9bdddd0ecdc82374e85994717d29f7fe, type: 2}
+  OnItemRepaired: {fileID: 11400000, guid: 20795e9d90d42594186205a0ccbda03a, type: 2}
+  itemData: {fileID: 11400000, guid: bd6ec14f95745174aa593e7b13b941ee, type: 2}
+  scoreCounter: {fileID: 11400000, guid: 680400d3b96ae9849abe2479e9395af6, type: 2}
+--- !u!114 &2880036026840069401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649796719962191968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81afa6e807487344e99b58b623d1fba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: bd6ec14f95745174aa593e7b13b941ee, type: 2}
 --- !u!1 &7649796719979338400
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +373,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7649796719962191973}
+      - m_Target: {fileID: 0}
         m_MethodName: TakeDamage
         m_Mode: 2
         m_Arguments:

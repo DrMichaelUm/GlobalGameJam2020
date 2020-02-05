@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GunSkill : MonoBehaviour
+public class GunSkill : MonoBehaviour, ISkillable
 {
     [SerializeField] private GameEvent OnRepairGunSkillCasted;
 
@@ -25,9 +25,7 @@ public class GunSkill : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            RaycastHit2D hit = GetRaycastHit(transform.up);
-            Skill(hit);
-            ChangeSkillRange(hit);
+            Skill();
         }
 
         else if (Input.GetMouseButtonUp(0))
@@ -62,7 +60,7 @@ public class GunSkill : MonoBehaviour
         }
     }
 
-    public void Skill(RaycastHit2D hit)
+    public void GunRaycastHit(RaycastHit2D hit)
     {
         //ItemBehaviour itemBehaviour = null;
         //if (hit)
@@ -87,6 +85,13 @@ public class GunSkill : MonoBehaviour
         //    itemBehaviour.itemRepairListener.SetActive(false);
         //    hitted = false;
         //}
+    }
+
+    public void Skill()
+    {
+        RaycastHit2D hit = GetRaycastHit(transform.up);
+        GunRaycastHit(hit);
+        ChangeSkillRange(hit);
         OnRepairGunSkillCasted.Raise();
         OnShooted.Invoke();
     }

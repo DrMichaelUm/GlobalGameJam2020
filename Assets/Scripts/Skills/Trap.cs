@@ -21,7 +21,6 @@ public class Trap : MonoBehaviour
 
     private void OnEnable()
     {
-        _circleCollider2D.enabled = true;
         OnTrapSpawned.Raise();
         //deactivate in 'lifetime' time after spawn
         StartCoroutine (Deactivate (lifetime));
@@ -44,7 +43,6 @@ public class Trap : MonoBehaviour
 
     public void DeactivateImmediately()
     {
-        _circleCollider2D.enabled = false;
         gameObject.SetActive (false);
     }
 

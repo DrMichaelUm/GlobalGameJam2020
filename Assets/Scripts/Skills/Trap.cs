@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Trap : MonoBehaviour    
+public class Trap : MonoBehaviour
 {
+    [SerializeField] private float hookSpeed;
+
     [SerializeField] private TrapData trapData;
 
     [SerializeField] private GameEvent OnTrapSpawned;
@@ -21,8 +23,9 @@ public class Trap : MonoBehaviour
 
     private void OnEnable()
     {
-        //deactivate in 'lifetime' time after spawn
+        _circleCollider2D.enabled = true;
         OnTrapSpawned.Raise();
+        //deactivate in 'lifetime' time after spawn
         StartCoroutine (Deactivate (lifetime));
     }
 
@@ -30,6 +33,23 @@ public class Trap : MonoBehaviour
     {
         lifetime = trapData.Lifetime;
         _circleCollider2D = GetComponent<CircleCollider2D>();
+    }
+
+    private void Hook (Transform obj)
+    {
+        StartCoroutine (HookToCenter (obj));
+    }
+
+    private IEnumerator HookToCenter (Transform obj)
+    {
+        //Distance
+        while ((obj.position - transform.position).sqrMagnitude > .01f)
+        {
+            obj.position =
+                Vector2.MoveTowards (obj.position, transform.position, Time.deltaTime * hookSpeed);
+
+            yield return null;
+        }
     }
 
     private IEnumerator Deactivate (float time)
@@ -43,7 +63,6 @@ public class Trap : MonoBehaviour
 
     public void DeactivateImmediately()
     {
-        _circleCollider2D.enabled = false;
         gameObject.SetActive (false);
     }
 
@@ -51,6 +70,10 @@ public class Trap : MonoBehaviour
     {
         if (other.CompareTag ("Destroyer"))
         {
+            _circleCollider2D.enabled = false;
+            
+            Hook(other.transform);
+            
             OnDestroyerTrapped.Raise();
             StartCoroutine (Deactivate (trapData.StunTime));
             //DeactivateImmediately();

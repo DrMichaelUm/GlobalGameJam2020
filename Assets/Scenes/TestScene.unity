@@ -3608,6 +3608,11 @@ PrefabInstance:
       propertyPath: m_CompositePaths.m_Paths.Array.data[8].Array.data[3].y
       value: -64.94
       objectReference: {fileID: 0}
+    - target: {fileID: 3562949286869589631, guid: 07158ef9a81117c4588472c6f1bf651f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8075682878472576922, guid: 07158ef9a81117c4588472c6f1bf651f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3920,17 +3925,17 @@ PrefabInstance:
     - target: {fileID: 70549565309459491, guid: 397b557038951824eb5bab130d1ad488,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 70549565309459491, guid: 397b557038951824eb5bab130d1ad488,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 70549565309459491, guid: 397b557038951824eb5bab130d1ad488,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6070727657789098169, guid: 397b557038951824eb5bab130d1ad488,
         type: 3}
@@ -4429,6 +4434,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974574281565597104, guid: 8a6b9961ee522f042b06ed44ad19a6fc,
+        type: 3}
+      propertyPath: m_Radius
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a6b9961ee522f042b06ed44ad19a6fc, type: 3}
@@ -4992,7 +5002,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 30.568085
+  orthographic size: 66.29
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

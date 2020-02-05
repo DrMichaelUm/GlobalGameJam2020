@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Trap : MonoBehaviour    
+public class Trap : MonoBehaviour
 {
+    [SerializeField] private float hookSpeed;
+
     [SerializeField] private TrapData trapData;
 
     [SerializeField] private GameEvent OnTrapSpawned;
@@ -33,6 +35,23 @@ public class Trap : MonoBehaviour
         _circleCollider2D = GetComponent<CircleCollider2D>();
     }
 
+    private void Hook (Transform obj)
+    {
+        StartCoroutine (HookToCenter (obj));
+    }
+
+    private IEnumerator HookToCenter (Transform obj)
+    {
+        //Distance
+        while ((obj.position - transform.position).sqrMagnitude > .01f)
+        {
+            obj.position =
+                Vector2.MoveTowards (obj.position, transform.position, Time.deltaTime * hookSpeed);
+
+            yield return null;
+        }
+    }
+
     private IEnumerator Deactivate (float time)
     {
         yield return new WaitForSeconds (time);
@@ -52,6 +71,8 @@ public class Trap : MonoBehaviour
         if (other.CompareTag ("Destroyer"))
         {
             _circleCollider2D.enabled = false;
+            
+            Hook(other.transform);
             
             OnDestroyerTrapped.Raise();
             StartCoroutine (Deactivate (trapData.StunTime));

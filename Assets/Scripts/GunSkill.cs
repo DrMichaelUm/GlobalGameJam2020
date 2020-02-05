@@ -51,7 +51,7 @@ public class GunSkill : MonoBehaviour
             //Debug.Log("LifeTime:" +startMinLifeTime+" "+startMaxLifeTime);
             float minLifeTime = startMinLifeTime * distance / (maxSkillDistance);
             float maxLifeTime = startMaxLifeTime * distance / (maxSkillDistance);
-            Debug.Log("LifeTimer:" + minLifeTime+" "+maxLifeTime);
+           // Debug.Log("LifeTimer:" + minLifeTime+" "+maxLifeTime);
 
             psLifeTime.startLifetime = new ParticleSystem.MinMaxCurve(minLifeTime, maxLifeTime);
         }

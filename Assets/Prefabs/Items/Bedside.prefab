@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6740234407360058366}
   - component: {fileID: 6740234407360058367}
-  - component: {fileID: 6740234407360058365}
   - component: {fileID: 3434882443863961310}
   - component: {fileID: 2280993495728717959}
+  - component: {fileID: -7552270060732007003}
+  - component: {fileID: 7401833725850061460}
   m_Layer: 11
   m_Name: Bedside
   m_TagString: Item
@@ -88,24 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6740234407360058365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6740234407360058360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f7b1a02bf6a5434197b3efe457a47b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDestroyListener: {fileID: 6740234407377219896}
-  itemRepairListener: {fileID: 9199479698354819868}
-  OnItemDestroyed: {fileID: 11400000, guid: 9bdddd0ecdc82374e85994717d29f7fe, type: 2}
-  OnItemRepaired: {fileID: 11400000, guid: 20795e9d90d42594186205a0ccbda03a, type: 2}
-  itemData: {fileID: 11400000, guid: 644032e2e1af78b4b84edabd53b5b422, type: 2}
-  scoreCounter: {fileID: 11400000, guid: 680400d3b96ae9849abe2479e9395af6, type: 2}
 --- !u!50 &3434882443863961310
 Rigidbody2D:
   serializedVersion: 4
@@ -153,6 +136,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6, y: 6}
   m_EdgeRadius: 0
+--- !u!114 &-7552270060732007003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740234407360058360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81afa6e807487344e99b58b623d1fba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 644032e2e1af78b4b84edabd53b5b422, type: 2}
+--- !u!114 &7401833725850061460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740234407360058360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e829d315eae7cda4bb78ce0eea00a061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDestroyListener: {fileID: 6740234407377219896}
+  itemRepairListener: {fileID: 9199479698354819868}
+  OnItemDestroyed: {fileID: 11400000, guid: 9bdddd0ecdc82374e85994717d29f7fe, type: 2}
+  OnItemRepaired: {fileID: 11400000, guid: 20795e9d90d42594186205a0ccbda03a, type: 2}
+  itemData: {fileID: 11400000, guid: 644032e2e1af78b4b84edabd53b5b422, type: 2}
+  scoreCounter: {fileID: 11400000, guid: 680400d3b96ae9849abe2479e9395af6, type: 2}
 --- !u!1 &6740234407377219896
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +214,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6740234407360058365}
+      - m_Target: {fileID: 0}
         m_MethodName: TakeDamage
         m_Mode: 2
         m_Arguments:
@@ -259,7 +273,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6740234407360058365}
+      - m_Target: {fileID: 0}
         m_MethodName: TakeRepairment
         m_Mode: 2
         m_Arguments:

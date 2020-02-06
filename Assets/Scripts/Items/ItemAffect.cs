@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class ItemAffect : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject itemDestroyListener;
-    [SerializeField]
-    private GameObject itemRepairListener;
+    [SerializeField] private GameObject itemDestroyListener;
+    [SerializeField] private GameObject itemRepairListener;
 
-    [SerializeField]
-    private GameEvent OnItemDestroyed;
-    [SerializeField]
-    private GameEvent OnItemRepaired;
+    public GameObject GetItemRepairListener => itemRepairListener;
 
-    [SerializeField]
-    private ItemData itemData;
-    [SerializeField]
-    private ScoreCounter scoreCounter;
+    [SerializeField] private GameEvent OnItemDestroyed;
+    [SerializeField] private GameEvent OnItemRepaired;
+
+    [SerializeField] private ItemData itemData;
+
+    [SerializeField] private ScoreCounter scoreCounter;
     //[SerializeField]
     //private PlayerData destroyerData;
     //[SerializeField]
@@ -33,40 +30,41 @@ public class ItemAffect : MonoBehaviour
 
     private void Start()
     {
-        itemDestroyListener.SetActive(false);
-        itemRepairListener.SetActive(false);
+        itemDestroyListener.SetActive (false);
+        itemRepairListener.SetActive (false);
         spRenderer = GetComponent<SpriteRenderer>();
-        spRenderer.sprite = itemData.Sprite;       
+        spRenderer.sprite = itemData.Sprite;
         itemHp = itemData.Hp;
         itemCost = itemData.Cost;
         destroyed = false;
         damaged = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D (Collider2D collision)
     {
-        //Debug.Log("Item in zone!");
-        if (collision.CompareTag("DestroyWave"))
-            itemDestroyListener.SetActive(true);
-        if(collision.CompareTag("RepairWave"))
-            itemRepairListener.SetActive(true);
+        if (collision.CompareTag ("DestroyWave"))
+            itemDestroyListener.SetActive (true);
+
+        if (collision.CompareTag ("RepairWave"))
+            itemRepairListener.SetActive (true);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D (Collider2D collision)
     {
         //Debug.Log("Item out of zone");
-        if (collision.CompareTag("DestroyWave"))
-            itemDestroyListener.SetActive(false);
-        if (collision.CompareTag("RepairWave"))
-            itemRepairListener.SetActive(false);
+        if (collision.CompareTag ("DestroyWave"))
+            itemDestroyListener.SetActive (false);
 
+        if (collision.CompareTag ("RepairWave"))
+            itemRepairListener.SetActive (false);
     }
 
-    private void TakeDamage(float damage)
+    private void TakeDamage (float damage)
     {
         if (!destroyed)
         {
             itemHp -= damage;
+
             if (itemHp <= 0)
             {
                 itemHp = 0;
@@ -74,7 +72,7 @@ public class ItemAffect : MonoBehaviour
                 destroyed = true;
 
                 //TODO запустить анимацию, частицы и звук уничтожения
-                ChangeScoreByItemCost(true);
+                ChangeScoreByItemCost (true);
                 spRenderer.sprite = itemData.DestroyedSprite;
                 OnItemDestroyed.Raise();
             }
@@ -86,7 +84,7 @@ public class ItemAffect : MonoBehaviour
         }
     }
 
-    private void TakeRepairment(float repairPower)
+    private void TakeRepairment (float repairPower)
     {
         if (destroyed || damaged)
         {
@@ -102,18 +100,19 @@ public class ItemAffect : MonoBehaviour
             else if (itemHp >= itemData.Hp / 2)
             {
                 destroyed = false;
-                ChangeScoreByItemCost(false);
+                ChangeScoreByItemCost (false);
                 spRenderer.sprite = itemData.DamagedSprite;
                 OnItemRepaired.Raise();
             }
         }
     }
-    private void ChangeScoreByItemCost(bool mode)
+
+    private void ChangeScoreByItemCost (bool mode)
     {
         if (mode)
         {
-                scoreCounter.Score += itemCost;
-                isScoreChanged = false;
+            scoreCounter.Score += itemCost;
+            isScoreChanged = false;
         }
         else
         {
@@ -124,13 +123,14 @@ public class ItemAffect : MonoBehaviour
             }
         }
     }
-    public void TakeDamage(PlayerData destroyerData)
+
+    public void TakeDamage (PlayerData destroyerData)
     {
-        TakeDamage(destroyerData.AttackPower);
+        TakeDamage (destroyerData.AttackPower);
     }
 
-    public void TakeRepairment(PlayerData repayerData)
+    public void TakeRepairment (PlayerData repayerData)
     {
-        TakeRepairment(repayerData.AttackPower);
+        TakeRepairment (repayerData.AttackPower);
     }
 }

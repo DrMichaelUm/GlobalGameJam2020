@@ -21,7 +21,7 @@ public abstract class PlayerAffects : MonoBehaviour
     private IEnumerator AddImpulseProcess(PlayerData opponentData)
     {
         Vector2 forceDirection = Random.insideUnitCircle.normalized;
-        float speed = opponentData.Strength;
+        float speed = opponentData.Strength*100f;
 
         while (timer >= 0)
         {

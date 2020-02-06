@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RepairerData
   m_EditorClassIdentifier: 
   attackPower: 3
-  knockStrength: 100
+  knockStrength: 10

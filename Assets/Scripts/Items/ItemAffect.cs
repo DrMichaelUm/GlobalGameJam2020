@@ -25,8 +25,8 @@ public class ItemAffect : MonoBehaviour
 
     private float itemHp;
     private int itemCost;
-    private bool destroyed;
-    private bool damaged;
+    [HideInInspector] public bool destroyed;
+    [HideInInspector] public bool damaged;
     private bool isScoreChanged = false;
 
     private SpriteRenderer spRenderer;
@@ -47,9 +47,9 @@ public class ItemAffect : MonoBehaviour
     {
         //Debug.Log("Item in zone!");
         if (collision.CompareTag("DestroyWave"))
-        itemDestroyListener.SetActive(true);
+            itemDestroyListener.SetActive(true);
         if(collision.CompareTag("RepairWave"))
-        itemRepairListener.SetActive(true);
+            itemRepairListener.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -108,7 +108,6 @@ public class ItemAffect : MonoBehaviour
             }
         }
     }
-
     private void ChangeScoreByItemCost(bool mode)
     {
         if (mode)

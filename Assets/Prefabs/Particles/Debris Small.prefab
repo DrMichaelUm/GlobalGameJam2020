@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3758396382858622659}
   - component: {fileID: 4078300791307712032}
   - component: {fileID: 3337406813026376599}
-  - component: {fileID: 1006808903182375674}
   m_Layer: 0
   m_Name: Debris Small
   m_TagString: Untagged
@@ -4651,16 +4650,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &1006808903182375674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2259311220021430066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ba033e247393f045982b4d91c59ef39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particles: {fileID: 4078300791307712032}

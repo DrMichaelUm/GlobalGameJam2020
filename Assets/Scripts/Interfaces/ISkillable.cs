@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface ISkillable
+﻿public interface ISkillable
 {
     void Skill();
 }

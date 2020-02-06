@@ -2,11 +2,10 @@
 using UnityEditorInternal;
 using UnityEngine;
 
-public class TrapSkill : MonoBehaviour
+public class TrapSkill : MonoBehaviour, ISkillable
 {
     [SerializeField] private TrapData trapData;
 
-    [SerializeField] private GameObject trapPrefab;
     [SerializeField] private CircleCollider2D trapSkillCollider;
     [SerializeField] private Transform trapsHolder;
 
@@ -16,7 +15,6 @@ public class TrapSkill : MonoBehaviour
     
     private GameObject _aimTrapPrefab;
     private GameObject _aimTrap;
-    // private Transform _aimsHolder;
 
     private Camera _mainCamera;
 
@@ -56,7 +54,7 @@ public class TrapSkill : MonoBehaviour
         _aimed = false;
     }
 
-    private void Skill()
+    public void Skill()
     {
         SpawnTrap (_aimTrap.transform.position);
         StopAim();
@@ -67,7 +65,6 @@ public class TrapSkill : MonoBehaviour
     {
         var obj= _objectsPool.GetObject();
         obj.transform.position = spawnPos;
-
     }
 
     private Vector2 GetMousePosition()

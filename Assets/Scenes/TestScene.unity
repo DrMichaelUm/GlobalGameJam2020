@@ -3817,7 +3817,7 @@ PrefabInstance:
     - target: {fileID: 5229393669819210624, guid: c9badbd23eddded47b5af9d679d0f4d5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9badbd23eddded47b5af9d679d0f4d5, type: 3}
@@ -4415,6 +4415,11 @@ PrefabInstance:
       propertyPath: m_ShapePath.Array.data[4].y
       value: 34.894768
       objectReference: {fileID: 0}
+    - target: {fileID: 3226970912373130987, guid: 8a6b9961ee522f042b06ed44ad19a6fc,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4974574281055550722, guid: 8a6b9961ee522f042b06ed44ad19a6fc,
         type: 3}
       propertyPath: m_Name
@@ -4490,6 +4495,11 @@ PrefabInstance:
       propertyPath: gunShapeLight
       value: 
       objectReference: {fileID: 2031357572}
+    - target: {fileID: 6480330324556352688, guid: 8a6b9961ee522f042b06ed44ad19a6fc,
+        type: 3}
+      propertyPath: maxSkillDistance
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a6b9961ee522f042b06ed44ad19a6fc, type: 3}
 --- !u!4 &877892590 stripped

@@ -8,6 +8,11 @@ public class GunSkill : MonoBehaviour, ISkillable
 
     [SerializeField] private float maxSkillDistance;
     [SerializeField] private ParticleSystem ps;
+
+    private BoxCollider2D gunSkillCollider;
+    private float startGunSkillColliderHeight;
+    private float startGunSkillColliderOffsetY;
+
     [SerializeField] private Light2D gunShapeLight;
     [SerializeField] private LayerMask mask;
 
@@ -15,11 +20,12 @@ public class GunSkill : MonoBehaviour, ISkillable
     [SerializeField] private UnityEvent OnStoppedShooting;
 
     private float hitDistance;
+    private float hitToMaxDistance;
 
     private float startMaxLifeTime;
     private float startMinLifeTime;
 
-    private Vector2[] gunLightPathPositions;                        //positions of path points on start
+    private Vector2[] gunLightPathPositions; //positions of path points on start
 
     public bool hitted = false;
 
@@ -37,12 +43,18 @@ public class GunSkill : MonoBehaviour, ISkillable
 
         for (int i = 0; i < gunLightPathPositions.Length; i++)
             gunLightPathPositions[i] = gunShapeLight.shapePath[i];
+
+        gunSkillCollider = GetComponent<BoxCollider2D>();
+        startGunSkillColliderHeight = gunSkillCollider.size.y;
+        startGunSkillColliderOffsetY = gunSkillCollider.offset.y;
     }
 
     private void Update()
     {
         if (Input.GetMouseButton (0))
+        {
             Skill();
+        }
 
         else if (Input.GetMouseButtonUp (0))
         {
@@ -58,34 +70,37 @@ public class GunSkill : MonoBehaviour, ISkillable
         return Physics2D.Raycast (startPoint, direction, maxSkillDistance, mask);
     }
 
-    private void ChangeSkillRange (RaycastHit2D hit)
+    private void CalculateHitDistance (RaycastHit2D hit)
+    {
+        if (hit)
+            hitDistance = Vector2.Distance (hit.point, transform.position);
+        else
+            hitDistance = maxSkillDistance;
+    }
+
+    private void CalculateHitToMaxDistance()
+    {
+        hitToMaxDistance = hitDistance / maxSkillDistance;
+    }
+
+    private void ChangeSkillParticleRange (RaycastHit2D hit)
     {
         var psLifeTime = ps.main;
 
         if (hit)
         {
-            //Debug.Log("Point: " + hit.point + " " + hit.collider.name);
-            float distance = Vector2.Distance (hit.point, transform.position);
-            //Debug.Log("LifeTime:" +startMinLifeTime+" "+startMaxLifeTime);
-            float minLifeTime = startMinLifeTime * distance / (maxSkillDistance);
-            float maxLifeTime = startMaxLifeTime * distance / (maxSkillDistance);
-            // Debug.Log("LifeTimer:" + minLifeTime+" "+maxLifeTime);
+            float minLifeTime = startMinLifeTime * hitDistance / (maxSkillDistance);
+            float maxLifeTime = startMaxLifeTime * hitDistance / (maxSkillDistance);
 
             psLifeTime.startLifetime = new ParticleSystem.MinMaxCurve (minLifeTime, maxLifeTime);
-
-            hitDistance = distance;
             
-            //proportion of hit distance to max skill distance
-            float hitToMaxDistance = hitDistance / maxSkillDistance;
             //Change light by proportion
             ChangeLightRange (hitToMaxDistance);
         }
         else
         {
             psLifeTime.startLifetime = new ParticleSystem.MinMaxCurve (startMaxLifeTime, startMinLifeTime);
-            
-            //reset 'hitDistance' meaning that ray is casting nothing 
-            hitDistance = 0;
+
             //Don't change range of light
             ChangeLightRange (1);
         }
@@ -95,7 +110,7 @@ public class GunSkill : MonoBehaviour, ISkillable
     /// Going throw all path points and change their Y position by 'coef'
     /// </summary>
     /// <param name="coef"></param>
-    private void ChangeLightRange(float coef)
+    private void ChangeLightRange (float coef)
     {
         for (int i = 1; i < gunShapeLight.shapePath.Length; i++)
         {
@@ -104,38 +119,25 @@ public class GunSkill : MonoBehaviour, ISkillable
         }
     }
 
-    public void GunRaycastHit (RaycastHit2D hit)
+    private void ChangeGunColliderDistance()
     {
-        //ItemBehaviour itemBehaviour = null;
-        //if (hit)
-        //{
+        float hitGunColliderHeight = startGunSkillColliderHeight * hitToMaxDistance;
+        float deltaHeight = Mathf.Abs (hitGunColliderHeight - gunSkillCollider.size.y * hitToMaxDistance);
 
-        //    if (hit.collider.CompareTag("Item"))
-        //    {
-        //        itemBehaviour = hit.collider.GetComponent<ItemBehaviour>();
-        //        itemBehaviour.itemRepairListener.SetActive(true);
-        //        hitted = true;
-        //    }
-        //    else if (hitted)
-        //    {
-        //        Debug.Log("TurnOff!!");
-        //        itemBehaviour.itemRepairListener.SetActive(false);
-        //        hitted = false;
-        //    }
-        //}
-        //else if (hitted)
-        //{
-        //    if (itemBehaviour != null)
-        //    itemBehaviour.itemRepairListener.SetActive(false);
-        //    hitted = false;
-        //}
+        gunSkillCollider.size = new Vector2 (gunSkillCollider.size.x, hitGunColliderHeight);
+
+        gunSkillCollider.offset = new Vector2 (gunSkillCollider.offset.x,
+                                               startGunSkillColliderOffsetY * hitToMaxDistance + deltaHeight / 2);
     }
-
+    
     public void Skill()
     {
         RaycastHit2D hit = GetRaycastHit (transform.up);
-        GunRaycastHit (hit);
-        ChangeSkillRange (hit);
+        CalculateHitDistance (hit);
+        CalculateHitToMaxDistance();
+
+        ChangeGunColliderDistance();
+        ChangeSkillParticleRange (hit);
         OnRepairGunSkillCasted.Raise();
         OnShooted.Invoke();
     }

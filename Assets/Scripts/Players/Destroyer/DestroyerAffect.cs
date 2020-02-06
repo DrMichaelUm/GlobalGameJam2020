@@ -19,8 +19,6 @@ public class DestroyerAffect : PlayerAffects
 
     private PlayerMovement _playerMovement;
 
-    private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
-
     private void Start()
     {
         destroyerData.AttackPower = startDamage;
@@ -65,7 +63,7 @@ public class DestroyerAffect : PlayerAffects
     {
         float normalSpeed = _playerMovement.MoveSpeed;
 
-        //OnDestroyerTrapped.Raise();
+        OnDestroyerTrapped.Raise();
 
         //freeze the player
         _playerMovement.MoveSpeed = 0;

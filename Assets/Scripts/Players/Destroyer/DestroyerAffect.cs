@@ -63,7 +63,7 @@ public class DestroyerAffect : PlayerAffects
     {
         float normalSpeed = _playerMovement.MoveSpeed;
 
-        OnDestroyerTrapped.Raise();
+        //OnDestroyerTrapped.Raise();
 
         //freeze the player
         _playerMovement.MoveSpeed = 0;

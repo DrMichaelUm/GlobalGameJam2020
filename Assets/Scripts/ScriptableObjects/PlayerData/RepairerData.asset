@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f84f7d21acaad459fac9a7b7fd30e6, type: 3}
   m_Name: RepairerData
   m_EditorClassIdentifier: 
-  attackPower: 3
+  attackPower: 0.4
   knockStrength: 10

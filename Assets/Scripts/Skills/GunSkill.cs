@@ -9,23 +9,25 @@ public class GunSkill : MonoBehaviour, ISkillable
     [SerializeField] private float maxSkillDistance;
     [SerializeField] private ParticleSystem ps;
 
-    private BoxCollider2D gunSkillCollider;
-    private float startGunSkillColliderHeight;
-    private float startGunSkillColliderOffsetY;
+    private BoxCollider2D _gunSkillCollider;
+    private float _startGunSkillColliderHeight;
+    private float _offsetToHeightGunSkillCollider;
 
     [SerializeField] private Light2D gunShapeLight;
     [SerializeField] private LayerMask mask;
 
-    [Space] [SerializeField] private UnityEvent OnShooted;
+    [Space] 
+    
+    [SerializeField] private UnityEvent OnShooted;
     [SerializeField] private UnityEvent OnStoppedShooting;
 
-    private float hitDistance;
-    private float hitToMaxDistance;
+    private float _hitDistance;
+    private float _hitToMaxDistance;
 
-    private float startMaxLifeTime;
-    private float startMinLifeTime;
+    private float _startMaxLifeTime;
+    private float _startMinLifeTime;
 
-    private Vector2[] gunLightPathPositions; //positions of path points on start
+    private Vector2[] _gunLightPathPositions; //positions of path points on start
 
     public bool hitted = false;
 
@@ -36,20 +38,20 @@ public class GunSkill : MonoBehaviour, ISkillable
 
     private void Init()
     {
-        startMaxLifeTime = ps.main.startLifetime.constantMax;
-        startMinLifeTime = ps.main.startLifetime.constantMin;
+        _startMaxLifeTime = ps.main.startLifetime.constantMax;
+        _startMinLifeTime = ps.main.startLifetime.constantMin;
 
-        gunLightPathPositions = new Vector2[gunShapeLight.shapePath.Length];
+        _gunLightPathPositions = new Vector2[gunShapeLight.shapePath.Length];
 
-        for (int i = 0; i < gunLightPathPositions.Length; i++)
-            gunLightPathPositions[i] = gunShapeLight.shapePath[i];
+        for (int i = 0; i < _gunLightPathPositions.Length; i++)
+            _gunLightPathPositions[i] = gunShapeLight.shapePath[i];
 
-        gunSkillCollider = GetComponent<BoxCollider2D>();
+        _gunSkillCollider = GetComponent<BoxCollider2D>();
         //gunSkillCollider.size = new Vector2 (gunSkillCollider.size.x, maxSkillDistance);
-                
-        startGunSkillColliderHeight = gunSkillCollider.size.y;
-        startGunSkillColliderOffsetY = gunSkillCollider.offset.y;
-        
+
+        _startGunSkillColliderHeight = _gunSkillCollider.size.y;
+        _offsetToHeightGunSkillCollider = _gunSkillCollider.offset.y / _startGunSkillColliderHeight;
+
         //ChangeGunColliderDistance();
         //Skill();
     }
@@ -78,14 +80,14 @@ public class GunSkill : MonoBehaviour, ISkillable
     private void CalculateHitDistance (RaycastHit2D hit)
     {
         if (hit)
-            hitDistance = Vector2.Distance (hit.point, transform.position);
+            _hitDistance = Vector2.Distance (hit.point, transform.position);
         else
-            hitDistance = maxSkillDistance;
+            _hitDistance = maxSkillDistance;
     }
 
     private void CalculateHitToMaxDistance()
     {
-        hitToMaxDistance = hitDistance / maxSkillDistance;
+        _hitToMaxDistance = _hitDistance / maxSkillDistance;
     }
 
     private void ChangeSkillParticleRange (RaycastHit2D hit)
@@ -94,17 +96,17 @@ public class GunSkill : MonoBehaviour, ISkillable
 
         if (hit)
         {
-            float minLifeTime = startMinLifeTime * hitDistance / (maxSkillDistance);
-            float maxLifeTime = startMaxLifeTime * hitDistance / (maxSkillDistance);
+            float minLifeTime = _startMinLifeTime * _hitDistance / (maxSkillDistance);
+            float maxLifeTime = _startMaxLifeTime * _hitDistance / (maxSkillDistance);
 
             psLifeTime.startLifetime = new ParticleSystem.MinMaxCurve (minLifeTime, maxLifeTime);
-            
+
             //Change light by proportion
-            ChangeLightRange (hitToMaxDistance * .5f);
+            ChangeLightRange (_hitToMaxDistance * .5f);
         }
         else
         {
-            psLifeTime.startLifetime = new ParticleSystem.MinMaxCurve (startMaxLifeTime, startMinLifeTime);
+            psLifeTime.startLifetime = new ParticleSystem.MinMaxCurve (_startMaxLifeTime, _startMinLifeTime);
 
             //Don't change range of light
             ChangeLightRange (1);
@@ -119,22 +121,20 @@ public class GunSkill : MonoBehaviour, ISkillable
     {
         for (int i = 1; i < gunShapeLight.shapePath.Length; i++)
         {
-            Vector3 newPos = new Vector2 (gunShapeLight.shapePath[i].x, gunLightPathPositions[i].y * coef);
+            Vector3 newPos = new Vector2 (gunShapeLight.shapePath[i].x, _gunLightPathPositions[i].y * coef);
             gunShapeLight.shapePath[i] = newPos;
         }
     }
 
     private void ChangeGunColliderDistance()
     {
-        float hitGunColliderHeight = startGunSkillColliderHeight * hitToMaxDistance;
-        float deltaHeight = Mathf.Abs (hitGunColliderHeight - gunSkillCollider.size.y * hitToMaxDistance);
+        float hitGunColliderHeight = _startGunSkillColliderHeight * _hitToMaxDistance;
 
-        gunSkillCollider.size = new Vector2 (gunSkillCollider.size.x, hitGunColliderHeight);
+        _gunSkillCollider.size = new Vector2 (_gunSkillCollider.size.x, hitGunColliderHeight);
 
-        gunSkillCollider.offset = new Vector2 (gunSkillCollider.offset.x,
-                                               startGunSkillColliderOffsetY * hitToMaxDistance + deltaHeight / 2);
+        _gunSkillCollider.offset = _gunSkillCollider.size * _offsetToHeightGunSkillCollider;
     }
-    
+
     public void Skill()
     {
         RaycastHit2D hit = GetRaycastHit (transform.up);
